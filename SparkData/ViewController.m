@@ -25,8 +25,8 @@
     
     //SETS KEYS AND VALUES USING 1:1 CORRELATION IN MEMORY
     NSLog(@"********** MEMORY WITH NEW KEY/VALUE PAIRS ADDED **********");
-    [SparkData setKey: @"Username" withValue: nil];
-    [SparkData setKey: @"Password" withValue: @"Chewymax12"];
+    [SparkData setValue:@"My Username" forKey:@"Username"];
+    [SparkData setValue:@"My Password" forKey:@"Password"];
     [SparkData printUsedMemory];
     
     //CLEARS THE VALUES ASSOCIATED WITH YOUR KEYS IN MEMORY

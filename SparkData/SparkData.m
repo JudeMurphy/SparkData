@@ -1,14 +1,29 @@
+// SparkData.h
 //
-//  SparkData.m
-//  SparkData
+// Copyright (c) 2015 Spark Apps, LLC http://www.sparkapps.com/
 //
-//  Created by Jude Murphy on 3/5/15.
-//  Copyright (c) 2015 Spark Apps, LLC. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import "SparkData.h"
 
 #define SPARKDATAKEY @"KeyForMemorySlotUsedBySparkData"
+#define MEMORYREFERENCE [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY]
 
 @implementation SparkData
 
@@ -24,7 +39,7 @@
 
 + (BOOL) isSparkDataInitialized
 {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY] == nil)
+    if (MEMORYREFERENCE == nil)
     {
         return NO;
     }
@@ -34,16 +49,10 @@
     }
 }
 
-+ (void) printUsedMemory
-{
-    NSLog(@"CURRENT SPARK DATA: %@", [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY]);
-}
-
-//SEARCHING METHODS
 + (BOOL) searchForKey: (NSString *) key
 {
     BOOL isFound = NO;
-    NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY] allKeys];
+    NSArray *allKeys = [MEMORYREFERENCE allKeys];
     for (NSString *keyInMemory in allKeys)
     {
         if ([keyInMemory isEqualToString: key])
@@ -56,31 +65,26 @@
     return isFound;
 }
 
-+ (void) setKey: (NSString *) key withValue: (NSString *) newValue
+//SETTER METHODS
++ (void) setValue: (NSString *) newValue forKey: (NSString *) key
 {
     if (newValue == nil)
     {
         newValue = @"";
     }
     
-    NSDictionary *localMemoryStorage = [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY];
-    NSMutableDictionary *mutableMemoryDictionary = [localMemoryStorage mutableCopy];
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
     [mutableMemoryDictionary setObject: newValue forKey: key];
-    
-    localMemoryStorage = mutableMemoryDictionary;
-    [[NSUserDefaults standardUserDefaults] setObject: localMemoryStorage forKey: SPARKDATAKEY];
+    [[NSUserDefaults standardUserDefaults] setObject: mutableMemoryDictionary forKey: SPARKDATAKEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+//REMOVAL METHODS
 + (void) removeKey: (NSString *) key
 {
-    NSDictionary *localMemoryStorage = [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY];
-    NSMutableDictionary *mutableMemoryDictionary = [localMemoryStorage mutableCopy];
-    
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
     [mutableMemoryDictionary removeObjectForKey: key];
-    localMemoryStorage = mutableMemoryDictionary;
-    
-    [[NSUserDefaults standardUserDefaults] setObject: localMemoryStorage forKey: SPARKDATAKEY];
+    [[NSUserDefaults standardUserDefaults] setObject: mutableMemoryDictionary forKey: SPARKDATAKEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -88,28 +92,23 @@
 {
     if ([SparkData searchForKey: key])
     {
-        NSDictionary *localMemoryStorage = [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY];
-        NSMutableDictionary *mutableMemoryDictionary = [localMemoryStorage mutableCopy];
+        NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
         [mutableMemoryDictionary setObject: @"" forKey: key];
-        localMemoryStorage = mutableMemoryDictionary;
-        [[NSUserDefaults standardUserDefaults] setObject: localMemoryStorage forKey: SPARKDATAKEY];
+        [[NSUserDefaults standardUserDefaults] setObject: mutableMemoryDictionary forKey: SPARKDATAKEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
 + (void) clearSparkDataValues
 {
-    NSDictionary *localMemoryStorage = [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY];
-    NSMutableDictionary *mutableMemoryDictionary = [localMemoryStorage mutableCopy];
-    
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
     NSArray *allKeys = [mutableMemoryDictionary allKeys];
     for (NSString *keyInMemory in allKeys)
     {
         [mutableMemoryDictionary setObject: @"" forKey: keyInMemory];
     }
     
-    localMemoryStorage = mutableMemoryDictionary;
-    [[NSUserDefaults standardUserDefaults] setObject: localMemoryStorage forKey: SPARKDATAKEY];
+    [[NSUserDefaults standardUserDefaults] setObject: mutableMemoryDictionary forKey: SPARKDATAKEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -119,12 +118,11 @@
     [SparkData initialize];
 }
 
+//RETIEVAL METHODS
 + (NSString *) getValueForKey: (NSString *) key
 {
     NSString *value = nil;
-    
-    NSDictionary *localMemoryStorage = [[NSUserDefaults standardUserDefaults] objectForKey: SPARKDATAKEY];
-    NSMutableDictionary *mutableMemoryDictionary = [localMemoryStorage mutableCopy];
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
 
     NSArray *allKeys = [mutableMemoryDictionary allKeys];
     for (NSString *keyInMemory in allKeys)
@@ -137,6 +135,12 @@
     }
     
     return value;
+}
+
+//DEVELOPER DEBUGGING METHODS
++ (void) printUsedMemory
+{
+    NSLog(@"CURRENT SPARK DATA: %@", MEMORYREFERENCE);
 }
 
 @end
