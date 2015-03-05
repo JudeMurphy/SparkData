@@ -14,6 +14,7 @@
 		A6D4112A1AA8CADB004E40E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6D411291AA8CADB004E40E6 /* Images.xcassets */; };
 		A6D4112D1AA8CADB004E40E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D4112B1AA8CADB004E40E6 /* LaunchScreen.xib */; };
 		A6D411391AA8CADB004E40E6 /* SparkDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D411381AA8CADB004E40E6 /* SparkDataTests.m */; };
+		A6D411441AA8CAFA004E40E6 /* SparkData.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D411431AA8CAFA004E40E6 /* SparkData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		A6D411321AA8CADB004E40E6 /* SparkDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D411371AA8CADB004E40E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6D411381AA8CADB004E40E6 /* SparkDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SparkDataTests.m; sourceTree = "<group>"; };
+		A6D411421AA8CAFA004E40E6 /* SparkData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkData.h; sourceTree = "<group>"; };
+		A6D411431AA8CAFA004E40E6 /* SparkData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				A6D411211AA8CADB004E40E6 /* AppDelegate.m */,
 				A6D411231AA8CADB004E40E6 /* ViewController.h */,
 				A6D411241AA8CADB004E40E6 /* ViewController.m */,
+				A6D411421AA8CAFA004E40E6 /* SparkData.h */,
+				A6D411431AA8CAFA004E40E6 /* SparkData.m */,
 				A6D411261AA8CADB004E40E6 /* Main.storyboard */,
 				A6D411291AA8CADB004E40E6 /* Images.xcassets */,
 				A6D4112B1AA8CADB004E40E6 /* LaunchScreen.xib */,
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6D411251AA8CADB004E40E6 /* ViewController.m in Sources */,
+				A6D411441AA8CAFA004E40E6 /* SparkData.m in Sources */,
 				A6D411221AA8CADB004E40E6 /* AppDelegate.m in Sources */,
 				A6D4111F1AA8CADB004E40E6 /* main.m in Sources */,
 			);

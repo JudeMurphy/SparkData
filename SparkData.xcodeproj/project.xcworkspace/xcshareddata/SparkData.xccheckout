@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F3ADA34C-6803-43AB-A03A-CCE46D76BC68</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SparkData</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4142CCD1801AB93C28BFAEAD64FD2A9E5C09207D</key>
+		<string>https://bitbucket.org/Jude_Murphy/sparkdata.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SparkData.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4142CCD1801AB93C28BFAEAD64FD2A9E5C09207D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/Jude_Murphy/sparkdata.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4142CCD1801AB93C28BFAEAD64FD2A9E5C09207D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4142CCD1801AB93C28BFAEAD64FD2A9E5C09207D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SparkData</string>
+		</dict>
+	</array>
+</dict>
+</plist>
