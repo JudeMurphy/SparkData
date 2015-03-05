@@ -1,6 +1,6 @@
 # README #
 
-This is Spark Apps, LLC's NSUserDefaults Memory Management Helper Class. This class enables the developer to utilize more robust, easy-to-type and easy-to-understand methods pertaining to NSUserDefaults, while implementing a faster and more efficient algorithm for the transactions between setting and retrieving data from memory. SparkData also allows easy management and visibility of key/value pairs, allowing the developer to more efficiently debug their code.
+This is Spark Apps, LLC's Lightweight NSUserDefaults Memory Management Helper Class. This class enables the developer to utilize more robust, easy-to-type and easy-to-understand methods pertaining to NSUserDefaults, while implementing a faster and more efficient algorithm for the transactions between setting and retrieving data from memory. SparkData also allows easy management and visibility of key/value pairs, allowing the developer to more efficiently debug their code.
 
 ### How do I get set up? ###
 
