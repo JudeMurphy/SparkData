@@ -6,7 +6,7 @@ This is Spark Apps, LLC's Lightweight NSUserDefaults Memory Management Helper Cl
 
 1. Import "SparkData.h" in you appDelegate.m
 2. In your applicationDidFinishLaunchingWithOptions, type [SparkData initialize];
-3. Use [SparkData METHOD] throughout the rest of your app. Refer to SparkData.h for callable method.
+3. Use [SparkData METHOD] throughout the rest of your app. Refer to SparkData.h for callable methods.
 
 ### Contribution guidelines ###
 
