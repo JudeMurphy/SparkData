@@ -25,8 +25,8 @@
     
     //SETS KEYS AND VALUES USING 1:1 CORRELATION IN MEMORY
     NSLog(@"********** MEMORY WITH NEW KEY/VALUE PAIRS ADDED **********");
-    [SparkData setValue:@"My Username" forKey:@"Username"];
-    [SparkData setValue:@"My Password" forKey:@"Password"];
+    [SparkData setValue:@"Best Username Ever" forKey:@"Username"];
+    [SparkData setValue:@"Best Password Ever" forKey:@"Password"];
     [SparkData printUsedMemory];
     
     //CLEARS THE VALUES ASSOCIATED WITH YOUR KEYS IN MEMORY
@@ -35,12 +35,13 @@
     [SparkData printUsedMemory];
     
     //REMOVES A KEY FROM YOUR CURRENT MEMORY MAPPING
-    NSLog(@"********** MEMORY WITH KEY REMOVED **********");
+    NSLog(@"********** MEMORY WITH USERNAME KEY REMOVED **********");
     [SparkData removeKey:@"Username"];
     [SparkData printUsedMemory];
     
     //SEARCHES A VALUE BASED ON A KEY FROM YOUR CURRENT MEMORY MAPPING
     NSLog(@"********** MEMORY WITH KEY SEARCHED **********");
+    [SparkData setValue:@"Best Password Ever" forKey:@"Password"];
     NSLog(@"FOUND VALUE: %@ FOR KEY: %@", [SparkData getValueForKey: @"Password"], @"Password");
     [SparkData printUsedMemory];
     
@@ -49,6 +50,9 @@
     [SparkData dumpSparkData];
     [SparkData printUsedMemory];
     
+    //METHOD SHOULD BE USED TO CHECK THE VALIDITY OF A VALUE PER KEY
+    BOOL flag = [SparkData isValueNilForKey:@"Username"];
+    NSLog(flag ? @"Yes" : @"No");
 }
 
 - (void)didReceiveMemoryWarning {

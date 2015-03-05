@@ -119,7 +119,7 @@
     [SparkData initialize];
 }
 
-//RETIEVAL METHODS
+//RETRIEVAL METHODS
 + (NSString *) getValueForKey: (NSString *) key
 {
     NSString *value = nil;
@@ -136,6 +136,20 @@
     }
     
     return value;
+}
+
+//CHECK VALUE FOR A SPECIFIED KE
++ (BOOL) isValueNilForKey: (NSString *) key
+{
+    BOOL isNil = NO;
+    
+    NSString *value = [SparkData getValueForKey: key];
+    if ([value isEqualToString: @""] || value == nil)
+    {
+        isNil = YES;
+    }
+    
+    return isNil;
 }
 
 //DEVELOPER DEBUGGING METHODS
