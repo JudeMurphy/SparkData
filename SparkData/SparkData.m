@@ -1,5 +1,6 @@
 // SparkData.h
 //
+// Developed by Jude Murphy
 // Copyright (c) 2015 Spark Apps, LLC http://www.sparkapps.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
