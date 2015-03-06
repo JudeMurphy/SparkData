@@ -29,12 +29,15 @@
 @implementation SparkData
 
 //CONSTRUCTOR METHODS
-+ (void) initialize
++ (void)initialize
 {
-    if(![SparkData isSparkDataInitialized])
+    if (self == [SparkData self])
     {
-        [[NSUserDefaults standardUserDefaults] setObject: [[NSDictionary alloc] init] forKey: SPARKDATAKEY];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        if(![SparkData isSparkDataInitialized])
+        {
+            [[NSUserDefaults standardUserDefaults] setObject: [[NSDictionary alloc] init] forKey: SPARKDATAKEY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
 }
 
