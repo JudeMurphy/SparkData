@@ -89,7 +89,7 @@
     
     if (newDictionary == nil)
     {
-        [mutableMemoryDictionary setObject: @{@"1" : @"1"} forKey: key];
+        [mutableMemoryDictionary setObject: [[NSDictionary alloc] init] forKey: key];
     }
     else
     {
