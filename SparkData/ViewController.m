@@ -54,6 +54,7 @@
     BOOL flag = [SparkData isValueNilForKey:@"Username"];
     NSLog(flag ? @"Yes" : @"No");
     
+    NSLog(@"********** NSDICTIONARY SUPPORT AND IN MEMORY **********");
     //METHOD SHOULD BE USED TO SET A VALUE PER KEY INSIDE OF AN NSDICTIONARY
     [SparkData setKeyPairInNestedDictionaryNamed: @"Hello1" withValue: @"Hi There?" andKey: @"Shayne"];
     [SparkData setKeyPairInNestedDictionaryNamed: @"Hello1" withValue: @"What's Up" andKey: @"Jude"];
