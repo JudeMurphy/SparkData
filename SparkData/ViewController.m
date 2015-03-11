@@ -53,6 +53,16 @@
     //METHOD SHOULD BE USED TO CHECK THE VALIDITY OF A VALUE PER KEY
     BOOL flag = [SparkData isValueNilForKey:@"Username"];
     NSLog(flag ? @"Yes" : @"No");
+    
+    //METHOD SHOULD BE USED TO SET A VALUE PER KEY INSIDE OF AN NSDICTIONARY
+    [SparkData setKeyPairInNestedDictionaryNamed: @"Hello1" withValue: @"Hi There?" andKey: @"Shayne"];
+    [SparkData setKeyPairInNestedDictionaryNamed: @"Hello1" withValue: @"What's Up" andKey: @"Jude"];
+    [SparkData setKeyPairInNestedDictionaryNamed: @"Hello2" withValue: @"What Is Down" andKey: @"Shayne"];
+    [SparkData setKeyPairInNestedDictionaryNamed: @"Hello2" withValue: @"Goodbye" andKey: @"Jude"];
+    [SparkData printUsedMemory];
+    
+    NSLog(@"GETTING THE NESTED DICTIONARY: %@", [SparkData getDictionaryForKey: @"Hello1"]);
+    NSLog(@"GETTING THE NESTED DICTIONARY: %@", [SparkData getDictionaryForKey: @"Hello2"]);
 }
 
 - (void)didReceiveMemoryWarning {

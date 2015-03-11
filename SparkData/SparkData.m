@@ -83,6 +83,50 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (void) setDictionary: (NSDictionary *) newDictionary forKey: (NSString *) key
+{
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
+    
+    if (newDictionary == nil)
+    {
+        [mutableMemoryDictionary setObject: @{@"1" : @"1"} forKey: key];
+    }
+    else
+    {
+        [mutableMemoryDictionary setObject: newDictionary forKey: key];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject: mutableMemoryDictionary forKey: SPARKDATAKEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void) setKeyPairInNestedDictionaryNamed: (NSString *) name withValue: (NSString *) nestedValue andKey: (NSString *) nestedKey
+{
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
+    
+    if ([SparkData searchForKey: name])
+    {
+        NSArray *allKeys = [mutableMemoryDictionary allKeys];
+        NSMutableDictionary *nestedDictionary = [[NSMutableDictionary alloc] init];
+        
+        for (NSString *keyInMemory in allKeys)
+        {
+            if ([keyInMemory isEqualToString: name])
+            {
+                nestedDictionary = [[mutableMemoryDictionary objectForKey: keyInMemory] mutableCopy];
+                [nestedDictionary setObject: nestedValue forKey: nestedKey];
+                [SparkData setDictionary: nestedDictionary forKey: name];
+                break;
+            }
+        }
+    }
+    else
+    {
+        [SparkData setDictionary: [[NSMutableDictionary alloc] init] forKey: name];
+        [SparkData setKeyPairInNestedDictionaryNamed: name withValue: nestedValue andKey: nestedKey];
+    }
+}
+
 //REMOVAL METHODS
 + (void) removeKey: (NSString *) key
 {
@@ -109,7 +153,14 @@
     NSArray *allKeys = [mutableMemoryDictionary allKeys];
     for (NSString *keyInMemory in allKeys)
     {
-        [mutableMemoryDictionary setObject: @"" forKey: keyInMemory];
+        if ([[mutableMemoryDictionary objectForKey: keyInMemory] isKindOfClass: [NSString class]])
+        {
+            [mutableMemoryDictionary setObject: @"" forKey: keyInMemory];
+        }
+        else
+        {
+            [mutableMemoryDictionary setObject: [[NSDictionary alloc] init] forKey: keyInMemory];
+        }
     }
     
     [[NSUserDefaults standardUserDefaults] setObject: mutableMemoryDictionary forKey: SPARKDATAKEY];
@@ -127,7 +178,25 @@
 {
     NSString *value = nil;
     NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
+    
+    NSArray *allKeys = [mutableMemoryDictionary allKeys];
+    for (NSString *keyInMemory in allKeys)
+    {
+        if ([keyInMemory isEqualToString: key])
+        {
+            value = [mutableMemoryDictionary objectForKey: keyInMemory];
+            break;
+        }
+    }
+    
+    return value;
+}
 
++ (NSDictionary *) getDictionaryForKey: (NSString *) key
+{
+    NSDictionary *value = nil;
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
+    
     NSArray *allKeys = [mutableMemoryDictionary allKeys];
     for (NSString *keyInMemory in allKeys)
     {
