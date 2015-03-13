@@ -230,4 +230,20 @@
     NSLog(@"CURRENT SPARK DATA: %@", MEMORYREFERENCE);
 }
 
++ (void) printNestedDictionaryNames
+{    
+    NSMutableDictionary *mutableMemoryDictionary = [MEMORYREFERENCE mutableCopy];
+    
+    NSArray *allKeys = [mutableMemoryDictionary allKeys];
+    for (NSString *keyInMemory in allKeys)
+    {
+        id value = [mutableMemoryDictionary objectForKey: keyInMemory];
+        
+        if ([value isKindOfClass:[NSDictionary class]])
+        {
+            NSLog(@"%@", keyInMemory);
+        }
+    }
+}
+
 @end
