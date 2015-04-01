@@ -210,7 +210,7 @@
     return value;
 }
 
-//CHECK VALUE FOR A SPECIFIED KE
+//CHECK VALUE FOR A SPECIFIED KEY
 + (BOOL) isValueNilForKey: (NSString *) key
 {
     BOOL isNil = NO;
