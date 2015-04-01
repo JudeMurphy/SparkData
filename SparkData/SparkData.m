@@ -210,7 +210,7 @@
     return value;
 }
 
-//CHECK VALUE FOR A SPECIFIED KEY
+//CHECK VALUE FOR A SPECIFIED KEY FROM METHOD CALL
 + (BOOL) isValueNilForKey: (NSString *) key
 {
     BOOL isNil = NO;
