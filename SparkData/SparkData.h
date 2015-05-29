@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 @interface SparkData : NSObject
@@ -36,14 +37,17 @@
 //SPARKDATA GETTER METHODS
 //SEARCHES THROUGH SPARKDATA FOR VALUE OF CORRESPONDING KEY
 +(NSString *) getValueForKey: (NSString *) key;
++(NSArray *) getNSArrayForKey: (NSString *) key;
 +(NSDictionary *) getDictionaryForKey: (NSString *) key;
 
 //________________________________________________________________
 //SPARKDATA SETTER METHODS
 //REPLACES A VALUE FOR A SPECIFIED KEY
 +(void) setValue: (NSString *) newValue forKey: (NSString *) key;
++(void) setNSArray: (NSArray *) newArray forKey: (NSString *) key;
 +(void) setDictionary: (NSDictionary *) newDictionary forKey: (NSString *) key;
 +(void) setKeyPairInNestedDictionaryNamed: (NSString *) name withValue: (NSString *) nestedValue andKey: (NSString *) nestedKey;
++(NSArray *) getArrayOfStringsFromDictionaryNamed: (NSString *) name;
 
 //________________________________________________________________
 //SPARKDATA REMOVAL METHODS
